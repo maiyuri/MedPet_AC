@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index</title>
+    </head>
+    <body>
+        {% if mensagem != '' %}
+            <h2>{{mensagem}}</h2>
+        {% endif %}
+        <p>Escolha a opção que você quer:</p>
+        <p><a href="/medicamento">Listar Medicamentos</a></p>
+        <p><a href="/medicamento/novo">Cadastrar Medicamento</a></p>
+        <p><a href="/usuario">Listar Usuários</a></p>
+        <p><a href="/usuario/novo">Cadastrar Novo Usuário</a></p>
+        <p><a href="/pedido/novo">Fazer Pedido</a></p>
+        <p><a href="/pedido">Listar Pedidos</a></p>
+        <p><a href="/twitter">Twitter MEDPET</a></p>
+    </body>
+</html>

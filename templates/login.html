@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <script type="text/javascript">
+            function validar() {
+                const usuario = document.getElementById('usuario');
+                const senha = document.getElementById('senha');
+                if (usuario.value === '') {
+                    alert("Preencha o usuario.");
+                    return false;
+                }
+                if (senha.value === '') {
+                    alert("Preencha a senha.");
+                    return false;
+                return true;
+            }
+
+            function logar() {
+                if (!validar()) return;
+                document.getElementById('form_login').submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="/" method="GET" id="form_login">
+            <p>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" autocomplete="off" value="Insira seu usuário" />
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="text" id="senha" name="senha" autocomplete="off" value="Insira sua senha." />
+
+            <p>
+                <button type="button" onclick="javascript:logar();">Logar</button>
+            </p>
+        </form>
+    </body>
+</html>

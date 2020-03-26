@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Usuários</title>
+    </head>
+    <body>
+        <h1>Usuarios:</h1>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Nome Completo</td>
+                <td>Usuário</td>
+                <td>&nbsp;</td>
+            </tr>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario['id_usuario']}}</td>
+                    <td>{{usuario['nome_usuario']}}</td>
+                    <td>{{usuario['usuario']}}</td>
+                    <td><a href="/usuario/{{usuario['id_usuario']}}" class="botao">Editar</a></td>
+                    <td><a href="/usuario/deletar/{{usuario['id_usuario']}}" class="botao">Excluir</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p><a href="/" class="botao">Voltar</a></p>
+    </body>
+</html>

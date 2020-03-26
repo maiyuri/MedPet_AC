@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastrar Medicamento</title>
+        <script type="text/javascript">
+            function validar() {
+                const nome = document.getElementById('nome');
+                const descricao = document.getElementById('descricao');
+                const dosagem = document.getElementById('dosagem');
+                const indicacao = document.getElementById('indicacao');
+                const porte = document.getElementById('porte');
+                const composicao = document.getElementById('composicao');
+                const marca = document.getElementById('marca');
+                if (nome.value === '') {
+                    alert("Preencha o nome.");
+                    return false;
+                }
+                if (composicao.value === '') {
+                    alert("Preencha a composição.");
+                    return false;
+                }
+                if (marca.value === '') {
+                    alert("Preencha a marca.");
+                    return false;
+                }
+                return true;
+            }
+
+            function salvar() {
+                if (!validar()) return;
+                document.getElementById("form_principal").submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="/medicamento/{{id_medicamento}}" method="POST" id="form_principal">
+            {% if id_medicamento != 'novo'%}
+                <p>
+                    <label>Id:</label>
+                    {{id_medicamento}}
+                </p>
+            {% endif %}
+            <p>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" autocomplete="off" value="{{nome}}" />
+            </p>
+            <p>
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" name="descricao" autocomplete="off" value="{{descricao}}" />
+            </p>
+            <p>
+                <label for="dosagem">Dosagem:</label>
+                <input type="text" id="dosagem" name="dosagem" autocomplete="off" value="{{dosagem}}" />
+            </p>
+            <p>
+                <label for="indicacao">Indicação:</label>
+                <input type="text" id="indicacao" name="indicacao" autocomplete="off" value="{{indicacao}}" />
+            </p>
+            <p>
+                <label for="porte">Porte:</label>
+                <input type="text" id="porte" name="porte" autocomplete="off" value="{{porte}}" />
+            </p>
+            <p>
+                <label for="composicao">Composição:</label>
+                <input type="text" id="composicao" name="composicao" autocomplete="off" value="{{composicao}}" />
+            </p>
+            <p>
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" autocomplete="off" value="{{marca}}" />
+            </p>
+            <p>
+                <button type="button" onclick="javascript:salvar();">Salvar</button>
+                <a href="/" class="botao">Voltar</a>
+            </p>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medicamentos</title>
+    </head>
+    <body>
+        <h1>Medicamentos:</h1>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Descrição</td>
+                <td>Dosagem</td>
+                <td>Indicação</td>
+                <td>Porte</td>
+                <td>Composição</td>
+                <td>Marca</td>
+                <td>&nbsp;</td>
+            </tr>
+            {% for medicamento in medicamentos %}
+                <tr>
+                    <td>{{medicamento['id_medicamento']}}</td>
+                    <td>{{medicamento['nome']}}</td>
+                    <td>{{medicamento['descricao']}}</td>
+                    <td>{{medicamento['dosagem']}}</td>
+                    <td>{{medicamento['indicacao']}}</td>
+                    <td>{{medicamento['porte']}}</td>
+                    <td>{{medicamento['composicao']}}</td>
+                    <td>{{medicamento['marca']}}</td>
+                    <td><a href="/medicamento/{{medicamento['id_medicamento']}}" class="botao">Editar</a></td>
+                    <td><a href="/medicamento/deletar/{{medicamento['id_medicamento']}}" class="botao">Excluir</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p><a href="/" class="botao">Voltar</a></p>
+    </body>
+</html>

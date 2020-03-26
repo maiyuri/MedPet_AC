@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Twitter MEDPET</title>
+    </head>
+    <body>
+        <h1>Postagens Twitter MEDPET:</h1>
+        <table>
+            <tr>
+                <td>Usuário</td>
+                <td>Data</td>
+                <td>Tweet</td>
+                <td>Likes</td>
+                <td>&nbsp;</td>
+            </tr>
+            {% for tweet in tweets %}
+                <tr>
+                    <td>{{tweet['Usuário']}}</td>
+                    <td>{{tweet['Data']}}</td>
+                    <td>{{tweet['Tweet']}}</td>
+                    <td>{{tweet['Likes']}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p><a href="/" class="botao">Voltar</a></p>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastrar Novo Usuário</title>
+        <script type="text/javascript">
+            function validar() {
+                const nome_usuario = document.getElementById('nome_usuario');
+                const usuario = document.getElementById('usuario');
+                const senha = document.getElementById('senha');
+                if (nome_usuario.value === '') {
+                    alert("Preencha seu nome.");
+                    return false;
+                }
+                if (usuario.value === '') {
+                    alert("Preencha seu usuário.");
+                    return false;
+                }
+                if (senha.value === '') {
+                    alert("Preencha sua senha.");
+                    return false;
+                }
+                return true;
+            }
+
+            function salvar() {
+                if (!validar()) return;
+                document.getElementById("form_principal").submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="/usuario/{{id_usuario}}" method="POST" id="form_principal">
+            {% if id_usuario != 'novo'%}
+                <p>
+                    <label>Id:</label>
+                    {{id_usuario}}
+                </p>
+            {% endif %}
+            <p>
+                <label for="nome_usuario">Nome Completo:</label>
+                <input type="text" id="nome_usuario" name="nome_usuario" autocomplete="off" value="{{nome_usuario}}" />
+            </p>
+            <p>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" autocomplete="off" value="{{usuario}}" />
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" autocomplete="off" value="{{senha}}" />
+            </p>
+            <p>
+                <button type="button" onclick="javascript:salvar();">Salvar</button>
+                <a href="/" class="botao">Voltar</a>
+            </p>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inserir Produto no Carrinho</title>
+        <script type="text/javascript">
+
+            function validar() {
+                
+                const nome_usuario = document.getElementById('nome_usuario');
+                const nome_produto = document.getElementById('nome_produto');
+                const qtde_produto = document.getElementById('qtde_produto');
+
+                if (nome_usuario.value === 'Escolha o Usuário') {
+                    alert("Selecione um usuário.");
+                    return false;
+                }
+                if (nome_produto.value == "Escolha o Produto") {
+                    alert("Selecione um produto.");
+                    return false;
+                }
+                if (qtde_produto.value == "") {
+                    alert("Insira uma quantidade.");
+                    return false;
+                }
+                return true;
+            }
+
+            function salvar() {
+                if (!validar()) return;
+                document.getElementById("form_principal").submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form action="/pedido/{{id_pedido}}" method="POST" id="form_principal">
+            {% if id_pedido != 'novo'%}
+            <p>
+                <label>Id:</label>
+                {{id_pedido}}
+            </p>
+        {% endif %}
+            <p>
+                <label for="nome_usuario">Usuário da Compra:</label>
+                <select name="nome_usuario" id="nome_usuario">
+                    <option value="escolha">Escolha o Usuário</option>
+                    {% for usuario in usuarios %}
+                        <option value="{{usuario['nome_usuario']}}" {% if id_usuario == usuario['id_usuario'] %}selected="selected"{% endif %}>{{usuario['nome_usuario']}}</option>
+                    {% endfor %}
+                    </select>
+                </select>
+            </p>
+            <p>
+
+                <label for="nome_produto">Produto:</label>
+                <select name="nome_produto" id="nome_produto">
+                    <option value="Escolha o Produto">Escolha o Produto</option>
+                    {% for medicamento in medicamentos %}
+                        <option value="{{medicamento['nome']}}" {% if id_medicamento == medicamento['id_medicamento'] %}selected="selected"{% endif %}>{{medicamento['nome']}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label for="qtde_produto">Quantidade:</label>
+                <input type="text" id="qtde_produto" name="qtde_produto" autocomplete="off" value="01" />
+            </p>
+            <p>
+                <button type="button" onclick="javascript:salvar();">Salvar</button>
+                <a href="/" class="botao">Voltar</a>
+            </p>
+        </form>
+    </body>
+</html>
